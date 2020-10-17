@@ -8,7 +8,7 @@ function onReady() {
   $('.buttonEquals').on('click', submitEquals);
   $('buttonClear').on('click', clear);
 }
-
+//DOM manipulation
 function submitEquals() {
   let firstNumber = $('.firstInputField').val();
   let secondNumber = $('.secondInputField').val();
@@ -17,9 +17,30 @@ function submitEquals() {
     secondNumber,
     operator: '',
   };
-  //   addition(numberInputs.operator);
   postInputs(numberInputs);
 }
+//   addition(numberInputs.operator);
+
+function addition(thing) {
+  thing = '+';
+  console.log('in thing', thing);
+  submitEquals();
+}
+function subtraction() {
+  console.log('sub works');
+}
+function multiplication() {
+  console.log('multiply works');
+}
+function division() {
+  console.log('division works');
+}
+
+function clear() {
+  console.log('clear works');
+}
+
+//API Server calls
 
 function postInputs(numbersToCalc) {
   $.ajax({
@@ -28,28 +49,11 @@ function postInputs(numbersToCalc) {
     data: { numbers: numbersToCalc },
   })
     .then(function (response) {
-      console.log('I have no idea what is happening');
+      //response is "created"
+      console.log('back to basics');
     })
     .catch(function (err) {
       console.log(err);
       alert('fuck this is tough');
     });
-}
-
-function addition(thing) {
-  //   thing = '+';
-  //   console.log(thing);
-}
-function subtraction() {
-  console.log('sub works');
-}
-function multiplication() {
-  console.log('mulitply works');
-}
-function division() {
-  console.log('division works');
-}
-
-function clear() {
-  console.log('clear works');
 }

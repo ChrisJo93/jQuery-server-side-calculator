@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const history = [];
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -16,25 +15,29 @@ app.get('/inputs', (req, res) => {
 });
 
 app.post('/inputs', (req, res) => {
+  const inputHistory = req.body.numbers;
+  console.log('inputValues: ', inputHistory);
+  const history = [];
+  history.push(inputHistory);
+  res.sendStatus(201);
   const inputs = req.body.numbers;
   console.log('in req: ', req.body.numbers);
   history.push(inputs);
   console.log('in inputs', inputs);
   console.log('in history', history);
-  //   let answer = 0;
-  //   if (inputs.operator === '-') {
-  //     answer = inputs.firstNumber -= inputs.secondNumber;
-  //     return answer;
-  //   } else if (inputs.operator === '+') {
-  //     answer = inputs.firstNumber += inputs.secondNumber;
-  //     return answer;
-  //   } else if (inputs.operator === '/') {
-  //     answer = inputs.firstNumber /= inputs.secondNumber;
-  //     return answer;
-  //   } else if (inputs.operator === '*') {
-  //     answer = inputs.firstNumber *= inputs.secondNumber;
-  //   }
-  res.sendStatus(201);
+  let answer = 0;
+  if (inputs.operator === '-') {
+    answer = inputs.firstNumber -= inputs.secondNumber;
+    return answer;
+  } else if (inputs.operator === '+') {
+    answer = inputs.firstNumber += inputs.secondNumber;
+    return answer;
+  } else if (inputs.operator === '/') {
+    answer = inputs.firstNumber /= inputs.secondNumber;
+    return answer;
+  } else if (inputs.operator === '*') {
+    answer = inputs.firstNumber *= inputs.secondNumber;
+  }
 });
 
 app.listen(PORT, function () {
