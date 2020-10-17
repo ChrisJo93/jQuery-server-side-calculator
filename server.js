@@ -16,9 +16,11 @@ app.get('/inputs', (req, res) => {
 });
 
 app.post('/inputs', (req, res) => {
-  const inputHistory = req.body.numbers;
-  console.log('inputValues: ', inputHistory);
+  const inputs = req.body.numbers;
+  console.log('inputValues: ', inputs);
   const history = [];
+  history.push(inputs);
+  console.log('in history: ', history);
   res.sendStatus(201);
 });
 
