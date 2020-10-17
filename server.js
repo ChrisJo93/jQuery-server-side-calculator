@@ -11,13 +11,15 @@ app.use(express.static('public'));
 //function to calculate two arguments
 //function should handle addition, subtraction, multiplication, division
 
-app.get('/test', (req, res) => {
-  res.send(history);
+app.get('/inputs', (req, res) => {
+  res.send('fuck if I know');
 });
 
-app.post('/test', (req, res) => {
-  console.log("still fuckin' about");
-  res.sendStatus(200);
+app.post('/inputs', (req, res) => {
+  const inputHistory = req.body.numbers;
+  console.log('inputValues: ', inputHistory);
+  const history = [];
+  res.sendStatus(201);
 });
 
 app.listen(PORT, function () {

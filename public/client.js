@@ -18,9 +18,25 @@ function submitEquals() {
     add: false,
     subtract: false,
     division: false,
-    muliply: false,
+    multiply: false,
   };
+  postInputs(numberInputs);
   console.log(firstNumber, secondNumber);
+}
+
+function postInputs(numbersToCalc) {
+  $.ajax({
+    type: 'POST',
+    url: '/inputs',
+    data: { numbers: numbersToCalc },
+  })
+    .then(function (response) {
+      console.log('I have no idea what is happening');
+    })
+    .catch(function (err) {
+      console.log(err);
+      alert('fuck this is tough');
+    });
 }
 
 function addition() {
