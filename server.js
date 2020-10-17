@@ -17,10 +17,23 @@ app.get('/inputs', (req, res) => {
 
 app.post('/inputs', (req, res) => {
   const inputs = req.body.numbers;
-  console.log('inputValues: ', inputs);
-  const history = [];
+  console.log('in req: ', req.body.numbers);
   history.push(inputs);
-  console.log('in history: ', history);
+  console.log('in inputs', inputs);
+  console.log('in history', history);
+  //   let answer = 0;
+  //   if (inputs.operator === '-') {
+  //     answer = inputs.firstNumber -= inputs.secondNumber;
+  //     return answer;
+  //   } else if (inputs.operator === '+') {
+  //     answer = inputs.firstNumber += inputs.secondNumber;
+  //     return answer;
+  //   } else if (inputs.operator === '/') {
+  //     answer = inputs.firstNumber /= inputs.secondNumber;
+  //     return answer;
+  //   } else if (inputs.operator === '*') {
+  //     answer = inputs.firstNumber *= inputs.secondNumber;
+  //   }
   res.sendStatus(201);
 });
 

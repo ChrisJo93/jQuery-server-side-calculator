@@ -15,13 +15,10 @@ function submitEquals() {
   const numberInputs = {
     firstNumber,
     secondNumber,
-    add: false,
-    subtract: false,
-    division: false,
-    multiply: false,
+    operator: '',
   };
+  //   addition(numberInputs.operator);
   postInputs(numberInputs);
-  console.log(firstNumber, secondNumber);
 }
 
 function postInputs(numbersToCalc) {
@@ -39,8 +36,9 @@ function postInputs(numbersToCalc) {
     });
 }
 
-function addition() {
-  console.log('add works');
+function addition(thing) {
+  //   thing = '+';
+  //   console.log(thing);
 }
 function subtraction() {
   console.log('sub works');
