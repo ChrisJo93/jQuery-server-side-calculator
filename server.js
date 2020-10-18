@@ -12,14 +12,8 @@ app.use(express.static('public'));
 //function to calculate two arguments
 //function should handle addition, subtraction, multiplication, division
 
-app.get('/inputs', (req, res) => {
-  res.send('fuck if I know');
-});
-
 app.post('/inputs', (req, res) => {
   const inputs = req.body.numbers;
-  history.push(inputs);
-  console.log('in history', history);
   if (inputs.operator === '-') {
     answer = parseInt(inputs.firstNumber) - parseInt(inputs.secondNumber);
     display =
@@ -35,13 +29,50 @@ app.post('/inputs', (req, res) => {
     history.push(display);
   } else if (inputs.operator === '+') {
     answer = parseInt(inputs.firstNumber) + parseInt(inputs.secondNumber);
+    display =
+      inputs.firstNumber +
+      ' ' +
+      inputs.operator +
+      ' ' +
+      inputs.secondNumber +
+      ' ' +
+      '=' +
+      ' ' +
+      answer;
+    history.push(display);
   } else if (inputs.operator === '/') {
     answer = parseInt(inputs.firstNumber) / parseInt(inputs.secondNumber);
+    display =
+      inputs.firstNumber +
+      ' ' +
+      inputs.operator +
+      ' ' +
+      inputs.secondNumber +
+      ' ' +
+      '=' +
+      ' ' +
+      answer;
+    history.push(display);
   } else if (inputs.operator === '*') {
     answer = parseInt(inputs.firstNumber) * parseInt(inputs.secondNumber);
+    display =
+      inputs.firstNumber +
+      ' ' +
+      inputs.operator +
+      ' ' +
+      inputs.secondNumber +
+      ' ' +
+      '=' +
+      ' ' +
+      answer;
+    history.push(display);
   }
   console.log(answer);
   res.sendStatus(201);
+});
+
+app.get('/inputs', (req, res) => {
+  res.send(history);
 });
 
 app.listen(PORT, function () {
