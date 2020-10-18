@@ -2,9 +2,9 @@ $(document).ready(onReady);
 
 function onReady() {
   $('.buttonAdd').on('click', addition);
-  $('.buttonSubtract').on('click', subtraction);
-  $('.buttonMultiply').on('click', multiplication);
-  $('.buttonDivide').on('click', division);
+  //   $('.buttonSubtract').on('click', subtraction);
+  //   $('.buttonMultiply').on('click', multiplication);
+  //   $('.buttonDivide').on('click', division);
   $('.buttonEquals').on('click', submitEquals);
   $('buttonClear').on('click', clear);
 }
@@ -15,11 +15,9 @@ function submitEquals() {
   const numberInputs = {
     firstNumber,
     secondNumber,
-    operator: '',
   };
   postInputs(numberInputs);
 }
-//   addition(numberInputs.operator);
 
 function addition(thing) {
   thing = '+';
@@ -37,6 +35,9 @@ function division() {
 }
 
 function clear() {
+  $('.firstInputField').val('');
+  $('.secondInputField').val('');
+
   console.log('clear works');
 }
 
