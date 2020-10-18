@@ -8,7 +8,7 @@ function onReady() {
   $('.buttonEquals').on('click', submitEquals);
   $('.buttonClear').on('click', clear);
 }
-//DOM manipulation
+//creates a manipulatable(word?) property to add to inputs
 let operator = '';
 
 function submitEquals() {
@@ -23,6 +23,7 @@ function submitEquals() {
 }
 
 function operation() {
+  //This part messed with my head. Gives value to the operator buttons
   operator = $(this).prop('value');
 }
 
