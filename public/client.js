@@ -6,7 +6,7 @@ function onReady() {
   $('.buttonDivide').on('click', operation);
   $('.buttonMultiply').on('click', operation);
   $('.buttonEquals').on('click', submitEquals);
-  $('buttonClear').on('click', clear);
+  $('.buttonClear').on('click', clear);
 }
 //DOM manipulation
 let operator = '';
@@ -32,10 +32,13 @@ function clear() {
 }
 
 function renderHistory(history) {
+  let counter = 1;
   $('.displayArea').empty();
   for (let i = 0; i < history.length; i++) {
     console.log('in history', history[i]);
-    $('.displayArea').append(`<li>${history[i]}<li>`);
+    $('.displayArea').append(
+      `<p>${counter++}: Previous Calculation: ${history[i]}<p>`
+    );
   }
 }
 
