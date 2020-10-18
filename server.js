@@ -19,20 +19,29 @@ app.get('/inputs', (req, res) => {
 app.post('/inputs', (req, res) => {
   const inputs = req.body.numbers;
   history.push(inputs);
-  res.sendStatus(201);
   console.log('in history', history);
   if (inputs.operator === '-') {
-    answer = inputs.firstNumber -= inputs.secondNumber;
-    console.log('minus:', answer);
+    answer = parseInt(inputs.firstNumber) - parseInt(inputs.secondNumber);
+    display =
+      inputs.firstNumber +
+      ' ' +
+      inputs.operator +
+      ' ' +
+      inputs.secondNumber +
+      ' ' +
+      '=' +
+      ' ' +
+      answer;
+    history.push(display);
   } else if (inputs.operator === '+') {
-    history.push(parseInt(inputs.firstNumber) + parseInt(inputs.secondNumber));
-    console.log('addition', history);
+    answer = parseInt(inputs.firstNumber) + parseInt(inputs.secondNumber);
   } else if (inputs.operator === '/') {
-    answer = inputs.firstNumber /= inputs.secondNumber;
-    console.log('geez batman', answer);
+    answer = parseInt(inputs.firstNumber) / parseInt(inputs.secondNumber);
   } else if (inputs.operator === '*') {
-    answer = inputs.firstNumber *= inputs.secondNumber;
+    answer = parseInt(inputs.firstNumber) * parseInt(inputs.secondNumber);
   }
+  console.log(answer);
+  res.sendStatus(201);
 });
 
 app.listen(PORT, function () {

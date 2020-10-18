@@ -1,14 +1,19 @@
 $(document).ready(onReady);
 
 function onReady() {
+  $('.buttonAdd').on('click', operation);
+  $('.buttonSubtract').on('click', operation);
+  $('.buttonDivide').on('click', operation);
+  $('.buttonMultiply').on('click', operation);
   $('.buttonEquals').on('click', submitEquals);
   $('buttonClear').on('click', clear);
 }
 //DOM manipulation
+let operator = '';
+
 function submitEquals() {
   let firstNumber = $('.firstInputField').val();
   let secondNumber = $('.secondInputField').val();
-  let operator = '+';
   const numberInputs = {
     firstNumber,
     secondNumber,
@@ -16,6 +21,10 @@ function submitEquals() {
   };
   postInputs(numberInputs);
   clear();
+}
+
+function operation() {
+  operator = $(this).prop('value');
 }
 
 function clear() {
