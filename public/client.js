@@ -1,10 +1,7 @@
 $(document).ready(onReady);
 
 function onReady() {
-  $('.buttonAdd').on('click', addition);
-  //   $('.buttonSubtract').on('click', subtraction);
-  //   $('.buttonMultiply').on('click', multiplication);
-  //   $('.buttonDivide').on('click', division);
+  $('.buttonAdd').on('click', test);
   $('.buttonEquals').on('click', submitEquals);
   $('buttonClear').on('click', clear);
 }
@@ -19,19 +16,8 @@ function submitEquals() {
   postInputs(numberInputs);
 }
 
-function addition(thing) {
-  thing = '+';
-  console.log('in thing', thing);
-  submitEquals();
-}
-function subtraction() {
-  console.log('sub works');
-}
-function multiplication() {
-  console.log('multiply works');
-}
-function division() {
-  console.log('division works');
+function addition() {
+  $;
 }
 
 function clear() {
