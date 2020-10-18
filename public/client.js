@@ -1,7 +1,6 @@
 $(document).ready(onReady);
 
 function onReady() {
-  $('.buttonAdd').on('click', test);
   $('.buttonEquals').on('click', submitEquals);
   $('buttonClear').on('click', clear);
 }
@@ -9,22 +8,19 @@ function onReady() {
 function submitEquals() {
   let firstNumber = $('.firstInputField').val();
   let secondNumber = $('.secondInputField').val();
+  let operator = '+';
   const numberInputs = {
     firstNumber,
     secondNumber,
+    operator,
   };
   postInputs(numberInputs);
-}
-
-function addition() {
-  $;
+  clear();
 }
 
 function clear() {
   $('.firstInputField').val('');
   $('.secondInputField').val('');
-
-  console.log('clear works');
 }
 
 //API Server calls
