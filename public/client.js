@@ -34,11 +34,9 @@ function clear() {
 }
 
 function renderHistory(history) {
-  //sets a counter for each history input
-  let counter = 1;
   $('.displayArea').empty();
   for (let i = 0; i < history.length; i++) {
-    $('.displayArea').append(`<p>${counter++}..... ${history[i]}<p>`);
+    $('.displayArea').append(`<p>${history[i]}<p>`);
   }
 }
 
