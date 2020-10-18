@@ -20,6 +20,8 @@ function submitEquals() {
     operator,
   };
   postInputs(numberInputs);
+  console.log('testing render in submit');
+  renderAnswer();
 }
 
 function operation() {
@@ -36,11 +38,14 @@ function renderHistory(history) {
   let counter = 1;
   $('.displayArea').empty();
   for (let i = 0; i < history.length; i++) {
-    console.log('in history', history[i]);
     $('.displayArea').append(
       `<p>${counter++}: Previous Calculation: ${history[i]}<p>`
     );
   }
+}
+
+function renderAnswer(thing) {
+  $('.answerBox').text(thing);
 }
 
 //API Server calls
@@ -54,6 +59,7 @@ function postInputs(numbersToCalc) {
     .then(function (response) {
       //response is "created"
       getHistory();
+      getAnswer();
     })
     .catch(function (err) {
       console.log(err);
@@ -72,5 +78,20 @@ function getHistory() {
     .catch(function (err) {
       console.log(err);
       alert('yo render broke af');
+    });
+}
+
+function getAnswer() {
+  $.ajax({
+    type: 'GET',
+    url: '/inputsAnswer',
+  })
+    .then(function (response) {
+      console.log('in response get: ', response);
+      renderAnswer(response);
+    })
+    .catch(function (err) {
+      console.log(err);
+      alert('yo shit broke here dog');
     });
 }
