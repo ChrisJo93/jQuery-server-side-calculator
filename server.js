@@ -67,7 +67,6 @@ app.post('/inputs', (req, res) => {
       answer;
     history.push(display);
   }
-  console.log(answer);
   res.sendStatus(201);
 });
 

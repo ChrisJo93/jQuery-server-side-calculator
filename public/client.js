@@ -20,7 +20,6 @@ function submitEquals() {
     operator,
   };
   postInputs(numberInputs);
-  console.log('testing render in submit');
   renderAnswer();
 }
 
@@ -35,12 +34,11 @@ function clear() {
 }
 
 function renderHistory(history) {
+  //sets a counter for each history input
   let counter = 1;
   $('.displayArea').empty();
   for (let i = 0; i < history.length; i++) {
-    $('.displayArea').append(
-      `<p>${counter++}: Previous Calculation: ${history[i]}<p>`
-    );
+    $('.displayArea').append(`<p>${counter++}..... ${history[i]}<p>`);
   }
 }
 
@@ -50,6 +48,7 @@ function renderAnswer(thing) {
 
 //API Server calls
 
+//ajax request that sends inputs from submit function
 function postInputs(numbersToCalc) {
   $.ajax({
     type: 'POST',
@@ -57,13 +56,16 @@ function postInputs(numbersToCalc) {
     data: { numbers: numbersToCalc },
   })
     .then(function (response) {
-      //response is "created"
+      //I don't know why these function calls are needed inside this post
+      //It would make sense for them to be functioning in just the get?
+      //maybe because this is sending it to the server and because of that delay
+      //they come back in a reasonable time? I don't know. help.
       getHistory();
       getAnswer();
     })
     .catch(function (err) {
       console.log(err);
-      alert('fuck this is tough');
+      alert('deng this is tough');
     });
 }
 
@@ -77,7 +79,7 @@ function getHistory() {
     })
     .catch(function (err) {
       console.log(err);
-      alert('yo render broke af');
+      alert('broke');
     });
 }
 
@@ -87,11 +89,10 @@ function getAnswer() {
     url: '/inputsAnswer',
   })
     .then(function (response) {
-      console.log('in response get: ', response);
       renderAnswer(response);
     })
     .catch(function (err) {
       console.log(err);
-      alert('yo shit broke here dog');
+      alert('big broke');
     });
 }
